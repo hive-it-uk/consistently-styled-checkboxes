@@ -14,7 +14,12 @@
       position: relative;
     }
 
+    .checkbox:last-of-type {
+      margin-bottom: 6rem;
+    }
+
     input {
+      cursor: pointer;
       height: 3rem;
       margin: 0;
       opacity: 0;
@@ -23,10 +28,18 @@
       z-index: 1;
     }
 
+    input:focus + label {
+      outline: 1px solid red;
+    }
+
+    label:focus {
+      outline: 1px solid red;
+    }
+
     label {
       font-size: 1.5rem;
       height: 2.2rem;
-      padding: 0.8rem 0 0 1.2rem;
+      padding: 0.8rem 0.3rem 0 1.2rem;
       position: absolute;
       text-indent: 3rem;
     }
@@ -64,11 +77,25 @@
 
   <body>
     <div class="checkbox">
-      <input type="checkbox" /> <label>Example checkbox label</label>
+      <input type="checkbox" />
+      <label>Example checkbox label</label>
     </div>
 
     <div class="checkbox">
-      <input type="checkbox" /> <label>Another checkbox label</label>
+      <input type="checkbox" />
+      <label>Another checkbox label</label>
     </div>
   </body>
+
+  <script>
+    'use strict';
+
+    Array.from(document.getElementsByTagName('label')).forEach(element => {
+      element.addEventListener('click', () => {
+        let checkbox = element.previousElementSibling;
+        checkbox.focus();
+        checkbox.checked = !checkbox.checked;
+      });
+    });
+  </script>
 </html>
