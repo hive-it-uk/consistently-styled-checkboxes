@@ -14,10 +14,6 @@
       position: relative;
     }
 
-    .checkbox:last-of-type {
-      margin-bottom: 6rem;
-    }
-
     input {
       cursor: pointer;
       height: 3rem;
@@ -48,7 +44,7 @@
       background: transparent;
       border: 0.2rem solid black;
       box-sizing: border-box;
-      content: '';
+      content: "";
       height: 3rem;
       left: 0;
       position: absolute;
@@ -57,10 +53,10 @@
     }
 
     label::after {
-      border-color: black;
+      border-color: transparent transparent black black;
       border-style: solid;
       border-width: 0 0 0.3rem 0.3rem;
-      content: '';
+      content: "";
       height: 0.6rem;
       left: 0.6rem;
       opacity: 0;
@@ -77,21 +73,31 @@
 
   <body>
     <div class="checkbox">
-      <input type="checkbox" />
+      <input
+        id="example-checkbox"
+        name="example-checkbox"
+        type="checkbox"
+        value="example-checkbox"
+      />
       <label>Example checkbox label</label>
     </div>
 
     <div class="checkbox">
-      <input type="checkbox" />
+      <input
+        id="another-checkbox"
+        name="another-checkbox"
+        type="checkbox"
+        value="another-checkbox"
+      />
       <label>Another checkbox label</label>
     </div>
   </body>
 
   <script>
-    'use strict';
+    "use strict";
 
-    Array.from(document.getElementsByTagName('label')).forEach(element => {
-      element.addEventListener('click', () => {
+    Array.from(document.getElementsByTagName("label")).forEach(element => {
+      element.addEventListener("click", () => {
         let checkbox = element.previousElementSibling;
         checkbox.focus();
         checkbox.checked = !checkbox.checked;
